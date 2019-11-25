@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_pletuk_dashboard"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".TugasActivity"
+    tools:showIn="@layout/activity_tugas">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/processing_tgsact_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:text="Processing..."
+            android:textColor="@color/colorPrimaryDark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/progress_tgsact_progressbar"
+                style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/progress_tgsact_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0%"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                app:fontFamily="@font/hammersmith_one" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tugas_tgsact_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="320dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/banner1_tgsact_tukit"
+                        android:layout_width="320dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        tools:srcCompat="@tools:sample/avatars[1]" />
+
+                    <com.google.android.gms.ads.AdView
+                        android:id="@+id/banner_tgsact_adview2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:adSize="LARGE_BANNER"
+                        app:adUnitId="ca-app-pub-8548009440279879/3336306672" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/jadwal_tgsact_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:scrollbars="none" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/jadwalitem_tgsact_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="10dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/today_tgsact_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/asap_medium"
+                        android:paddingLeft="10dp"
+                        android:text="Today - loading..."
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimaryDark" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tugas_today_tgsact_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp" />
+
+                    <ImageView
+                        android:id="@+id/errToday"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/tugas_nodata"
+                        tools:srcCompat="@tools:sample/avatars[0]" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="10dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tommorow_tgsact_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/asap_medium"
+                        android:paddingLeft="10dp"
+                        android:text="Tommorow - loading..."
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/divider2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimaryDark" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tugas_tommorow_tgsact_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="5dp" />
+
+                    <ImageView
+                        android:id="@+id/errTommorow"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/tugas_nodata"
+                        tools:srcCompat="@tools:sample/avatars[0]" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="320dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/banner2_tgsact_tukit"
+                        android:layout_width="320dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        tools:srcCompat="@tools:sample/avatars[2]" />
+
+                    <com.google.android.gms.ads.AdView
+                        android:id="@+id/banner_tgsact_adview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:adSize="LARGE_BANNER"
+                        app:adUnitId="ca-app-pub-8548009440279879/3336306672" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView85"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/nunito_sans_semibold"
+                        android:text="Personalize Your Group"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <Button
+                        android:id="@+id/pengaturan_tgsact_button"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Go"
+                        android:textColor="@color/redDark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/absent_tgsact_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/nunito_sans_semibold"
+                        android:text="Not Absented Today - connecting..."
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/absent_tgsact_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="30dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="10dp"
+                app:contentPaddingRight="15dp"
+                app:contentPaddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/others_tgsact_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/asap_medium"
+                        android:paddingLeft="10dp"
+                        android:text="Others - loading..."
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/divider3"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimaryDark" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tugas_others_tgsact_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="5dp" />
+
+                    <ImageView
+                        android:id="@+id/errOthers"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/tugas_nodata"
+                        tools:srcCompat="@tools:sample/avatars[0]" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

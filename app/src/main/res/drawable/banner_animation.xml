@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/banner_tugaskita_1"
+        android:duration="3000"/>
+
+    <item android:drawable="@drawable/banner_tugaskita_2"
+        android:duration="3000"/>
+
+    <item android:drawable="@drawable/banner_tugaskita_3"
+        android:duration="3000"/>
+
+    <item android:drawable="@drawable/banner_tugaskita_4"
+        android:duration="3000"/>
+
+    <item android:drawable="@drawable/banner_tugaskita_5"
+        android:duration="3000"/>
+
+</animation-list>

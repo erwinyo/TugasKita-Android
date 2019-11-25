@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "962755836012",
+    "firebase_url": "https://tugaskita-fc639.firebaseio.com",
+    "project_id": "tugaskita-fc639",
+    "storage_bucket": "tugaskita-fc639.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962755836012:android:ecc0ea82049df1d2",
+        "android_client_info": {
+          "package_name": "com.example.tugaskita30"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962755836012-g6osmbgthevj7spcstnul7m7o5m53b8t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tugaskita30",
+            "certificate_hash": "74982207376d6d6ef7db4ddb0e875360ab805dc2"
+          }
+        },
+        {
+          "client_id": "962755836012-o6r173arphadvu9cnlnbpe699ds6q523.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqMuhwhQfjDg-eK5UC7AH1HqQbe_W5Q2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962755836012-o6r173arphadvu9cnlnbpe699ds6q523.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
