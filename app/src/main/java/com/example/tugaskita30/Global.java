@@ -4,14 +4,17 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.MediaStore;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Map;
 import java.util.Random;
 
@@ -72,19 +75,6 @@ public class Global extends AppCompatActivity {
     private String data_tambahtugas_waktu;
     private String data_tambahtugas_cerita;
     private String data_tambahtugas_prioritas;
-
-    private String data_anggotaid;
-    private String data_anggotanamalengkap;
-    private String data_anggotanama;
-    private String data_anggotaemail;
-    private String data_anggotaavatar;
-    private String data_anggotastatus;
-
-    private String data_scanaddid;
-    private String data_scanaddnamalengkap;
-    private String data_scanaddnama;
-    private String data_scanaddemail;
-    private String data_scanaddavatar;
 
     private String data_scanabsentid;
     private String data_scanabsentnama;
@@ -394,88 +384,6 @@ public class Global extends AppCompatActivity {
         return this.data_tambahtugas_prioritas;
     }
 
-
-
-    public void setDataAnggotaId(String d){
-        this.data_anggotaid=d;
-    }
-    public String getDataAnggotaId(){
-        return this.data_anggotaid;
-    }
-
-    public void setDataAnggotaNamaLengkap(String d){
-        this.data_anggotanamalengkap=d;
-    }
-    public String getDataAnggotaNamaLengkap(){
-        return this.data_anggotanamalengkap;
-    }
-
-    public void setDataAnggotaNama(String d){
-        this.data_anggotanama=d;
-    }
-    public String getDataAnggotaNama(){
-        return this.data_anggotanama;
-    }
-
-    public void setDataAnggotaEmail(String d){
-        this.data_anggotaemail=d;
-    }
-    public String getDataAnggotaEmail(){
-        return this.data_anggotaemail;
-    }
-
-    public void setDataAnggotaStatus(String d){
-        this.data_anggotastatus=d;
-    }
-    public String getDataAnggotaStatus(){
-        return this.data_anggotastatus;
-    }
-
-    public void setDataAnggotaAvatar(String d){
-        this.data_anggotaavatar=d;
-    }
-    public String getDataAnggotaAvatar(){
-        return this.data_anggotaavatar;
-    }
-
-
-    public void setDataScanAddId(String d){
-        this.data_scanaddid=d;
-    }
-    public String getDataScanAddId(){
-        return this.data_scanaddid;
-    }
-
-    public void setDataScanAddNamaLengkap(String d){
-        this.data_scanaddnamalengkap=d;
-    }
-    public String getDataScanAddNamaLengkap(){
-        return this.data_scanaddnamalengkap;
-    }
-
-    public void setDataScanAddNama(String d){
-        this.data_scanaddnama=d;
-    }
-    public String getDataScanAddaNama(){
-        return this.data_scanaddnama;
-    }
-
-    public void setDataScanAddEmail(String d){
-        this.data_scanaddemail=d;
-    }
-    public String getDataScanAddEmail(){
-        return this.data_scanaddemail;
-    }
-
-    public void setDataScanAddAvatar(String d){
-        this.data_scanaddavatar=d;
-    }
-    public String getDataScanAddAvatar(){
-        return this.data_scanaddavatar;
-    }
-
-
-
     public void setDataScanAbsentId(String d){
         this.data_scanabsentid=d;
     }
@@ -533,13 +441,13 @@ public class Global extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(cntx, 0, intent, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(cntx, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_school_blue_24dp)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(contentTitle)
                 .setContentText(contentSubject)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(contentSnippet))
                 .setLargeIcon(BitmapFactory.decodeResource(cntx.getResources(),
-                        R.drawable.tugaskita_icon))
+                        R.mipmap.ic_launcher))
                 .setSound(Uri.parse("android.resource://"+cntx.getPackageName()+"/"+R.raw.notification))
                 .setColor(ContextCompat.getColor(cntx, R.color.blue))
                 .setVibrate(new long[]{Notification.DEFAULT_VIBRATE})
@@ -562,11 +470,11 @@ public class Global extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(cntx, 0, intent, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(cntx, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_school_blue_24dp)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(contentTitle)
                 .setContentText(contentSubject)
                 .setLargeIcon(BitmapFactory.decodeResource(cntx.getResources(),
-                        R.drawable.tugaskita_icon))
+                        R.mipmap.ic_launcher))
                 .setSound(Uri.parse("android.resource://"+cntx.getPackageName()+"/"+R.raw.notification))
                 .setColor(ContextCompat.getColor(cntx, R.color.blue))
                 .setVibrate(new long[]{Notification.DEFAULT_VIBRATE})
@@ -589,7 +497,7 @@ public class Global extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(cntx, 0, intent, 0);
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(cntx, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_school_blue_24dp)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)
                 .setStyle(new NotificationCompat.BigTextStyle()
@@ -619,13 +527,13 @@ public class Global extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(cntx, 0, intent, 0);
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(cntx, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_school_blue_24dp)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(contentText))
                 .setLargeIcon(BitmapFactory.decodeResource(cntx.getResources(),
-                        R.drawable.tugaskita_icon))
+                        R.mipmap.ic_launcher))
                 .setSound(Uri.parse("android.resource://"+cntx.getPackageName()+"/"+R.raw.notification))
                 .setColor(ContextCompat.getColor(cntx, R.color.blue))
                 .setVibrate(new long[]{Notification.DEFAULT_VIBRATE})
@@ -669,6 +577,13 @@ public class Global extends AppCompatActivity {
         else if (keyword.equals("man_4"))
             result = R.drawable.man_4;
         return result;
+    }
+
+    public Uri getImageUri(Context context, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
 

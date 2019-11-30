@@ -163,7 +163,7 @@
                 android:id="@+id/continue_absact_button"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_solid_blue_selected_border"
+                android:background="@drawable/rounded_solid_primary_border"
                 android:fontFamily="@font/viga"
                 android:onClick="openScanActivity"
                 android:text="Continue"

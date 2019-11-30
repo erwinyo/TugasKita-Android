@@ -13,9 +13,11 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +34,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cloudinary.android.MediaManager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +50,7 @@ public class SplashActivity extends AppCompatActivity {
 
     Session session;
     Global global = Global.getInstance();
+    String TAG = "TAG";
 
     String URL_POST_LOGIN = "http://".concat(global.getDataHosting()).concat("/tugaskita/android/login.php");
     String URL_MAINTANCE = "http://".concat(global.getDataHosting()).concat("/tugaskita/android/information.php");
@@ -74,6 +81,24 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
+            // Google Cloud Messaging Firebase
+            FirebaseInstanceId.getInstance().getInstanceId()
+                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "getInstanceId failed", task.getException());
+                                return;
+                            }
+
+                            // Get new Instance ID token
+                            String token = task.getResult().getToken();
+
+                            // Log and toast
+                            String msg = getString(R.string.msg_token_fmt, token);
+                            Log.d(TAG, msg);
+                        }
+                    });
             // GET CURRENT MAINTANCE INFORMATION
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_MAINTANCE,
                     new Response.Listener<String>() {

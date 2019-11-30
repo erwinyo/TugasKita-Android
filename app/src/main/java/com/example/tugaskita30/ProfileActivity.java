@@ -117,7 +117,7 @@ public class ProfileActivity extends AppCompatActivity {
                     // CREATE UNIQUE ID WITH TIME AND DATE
                     Date dNow = new Date();
                     SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd.HH:mm:ss:SSS");
-                    final String uniqueID = global.getDataUserId() + "." + ft.format(dNow);
+                    final String uniqueID = session.getUserId() + "." + ft.format(dNow);
 
                     Map<String, Object> options = new HashMap<>();
                     options.put("public_id", uniqueID);

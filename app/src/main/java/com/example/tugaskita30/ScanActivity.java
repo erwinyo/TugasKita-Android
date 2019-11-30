@@ -1,8 +1,11 @@
 package com.example.tugaskita30;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
@@ -18,10 +21,11 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
-public class ScanActivity extends AppCompatActivity {
+public class ScanActivity extends AppCompatActivity implements DialogError.DialogErrorListener {
 
     Global global = Global.getInstance();
     SurfaceView surfaceView;
@@ -53,6 +57,13 @@ public class ScanActivity extends AppCompatActivity {
                 startActivity(new Intent(ScanActivity.this, MyQrCodeActivity.class));
             }
         });
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     private void initialiseDetectorsAndSources() {
@@ -107,27 +118,45 @@ public class ScanActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            String value = barcodes.valueAt(0).displayValue;
-                            String[] valueArray = value.split("-");
-                            String key = valueArray[0];
-                            String data = valueArray[1];
+                            if (isNetworkAvailable()) {
+                                String value = barcodes.valueAt(0).displayValue;
+                                if (value.contains("-")) {
+                                    String[] valueArray = value.split("-");
+                                    String key = valueArray[0];
+                                    String data = valueArray[1];
 
-                            if (key.equals("add")) {
-                                i++;
-                                if (i == 1) {
-                                    Intent intent = new Intent(ScanActivity.this, AddScanActivity.class);
-                                    intent.putExtra("data", data);
-                                    startActivity(intent);
+                                    if (key.equals("add")) {
+                                        i++;
+                                        if (i == 1) {
+                                            Intent intent = new Intent(ScanActivity.this, AddScanActivity.class);
+                                            intent.putExtra("data", data);
+                                            startActivity(intent);
+                                        }
+                                    } else if (key.equals("absent")) {
+                                        i++;
+                                        if (i == 1) {
+                                            Intent intent = new Intent(ScanActivity.this, AbsentScanActivity.class);
+                                            intent.putExtra("data", data);
+                                            startActivity(intent);
+                                        }
+                                    } else if (key.equals("grup")) {
+                                        i++;
+                                        if (i == 1) {
+                                            Intent intent = new Intent(ScanActivity.this, GrupScanActivity.class);
+                                            intent.putExtra("data", data);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                    txtBarcodeValue.setText(value);
+                                } else {
+                                    txtBarcodeValue.setText("Can't read this QR!");
                                 }
-                            } else if (key.equals("absent")) {
+                            } else {
                                 i++;
                                 if (i == 1) {
-                                    Intent intent = new Intent(ScanActivity.this, AbsentScanActivity.class);
-                                    intent.putExtra("data", data);
-                                    startActivity(intent);
+                                    openErrorPopup("no internet connection!");
                                 }
                             }
-                            txtBarcodeValue.setText(value);
                         }
                     });
                 }
@@ -158,7 +187,17 @@ public class ScanActivity extends AppCompatActivity {
     }
 
     public void openErrorDialog(String errorString) {
+        Snackbar.make(btnAction, errorString, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+
+    public void openErrorPopup(String errorString) {
         DialogError dialogError = new DialogError(errorString);
-        dialogError.show(getSupportFragmentManager(), "Error dialog");
+        dialogError.show(getSupportFragmentManager(), "Error popup");
+    }
+
+    @Override
+    public void onExit() {
+        finish();
     }
 }

@@ -5,12 +5,15 @@
         <item>@font/acme</item>
         <item>@font/asap_medium</item>
         <item>@font/baloo_thambi</item>
+        <item>@font/cabin_semibold</item>
         <item>@font/convergence</item>
         <item>@font/faster_one</item>
         <item>@font/hammersmith_one</item>
         <item>@font/mclaren</item>
         <item>@font/mitr</item>
         <item>@font/nunito_sans_semibold</item>
+        <item>@font/palanquin_dark_semibold</item>
+        <item>@font/spinnaker</item>
         <item>@font/titillium_web_semibold</item>
         <item>@font/viga</item>
     </array>

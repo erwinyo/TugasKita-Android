@@ -3,9 +3,12 @@ package com.example.tugaskita30;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,6 +59,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,6 +80,7 @@ public class DashboardActivity extends AppCompatActivity {
     ImageView profile_image;
     ProgressBar progress_grup;
     ImageView errGrup;
+    Uri uri;
     CarouselView carouselView;
     int[] sampleImages = {R.drawable.apa_itu_tugaskita, R.drawable.tugaskita_target, R.drawable.tugaskita_checkpoint, R.drawable.tugaskita_cbt, R.drawable.tugaskita_insight};
     ImageListener imageListener = new ImageListener() {
@@ -97,8 +106,6 @@ public class DashboardActivity extends AppCompatActivity {
 
     AnimationDrawable bannerTukitAnimation;
     ImageView banner_tukit;
-
-    String CHANNEL_ID_PROGRESS = "progress notification";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +139,16 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(int position) {
                 if (position == 0) {
                     startActivity(new Intent(DashboardActivity.this, WhatsNewInTugasKitaActivity.class));
+                } else if (position == 1) {
+                    startActivity(new Intent(DashboardActivity.this, TugaskitaTargetInfoActivity.class));
+                } else if (position == 2) {
+                    startActivity(new Intent(DashboardActivity.this, TugaskitaCheckpointInfoActivity.class));
+                } else if (position == 3) {
+                    startActivity(new Intent(DashboardActivity.this, TugaskitaCBTInfoActivity.class));
+                } else if (position == 4) {
+                    startActivity(new Intent(DashboardActivity.this, TugaskitaInsightInfoActivity.class));
                 }
+
             }
         });
         mAdView = findViewById(R.id.ads_adview);
@@ -328,6 +344,11 @@ public class DashboardActivity extends AppCompatActivity {
                 String result = data.getStringExtra("intentCallbackScan");
                 if (result.equals("new-absent")) {
                     point_text.setText(global.getDataUserPoint());
+                    // Reset
+                    global.setDataIntentKY("end");
+                }
+                if (result.equals("update-grup")) {
+                    loadGrup();
                     // Reset
                     global.setDataIntentKY("end");
                 }
@@ -724,5 +745,30 @@ public class DashboardActivity extends AppCompatActivity {
         }, 2000);
     }
 
+    public void storeScreenshot(Bitmap bitmap, String filename) {
+        String path = Environment.getExternalStorageDirectory().toString() + "/" + filename;
+        OutputStream out = null;
+        File imageFile = new File(path);
 
+        try {
+            out = new FileOutputStream(imageFile);
+            // choose JPEG format
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+        } catch (FileNotFoundException e) {
+            // manage exception ...
+        } catch (IOException e) {
+            // manage exception ...
+        } finally {
+
+            try {
+                if (out != null) {
+                    out.close();
+                }
+
+            } catch (Exception exc) {
+            }
+
+        }
+    }
 }

@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
@@ -46,6 +45,7 @@ import java.util.Map;
 
 public class AbsentScanActivity extends AppCompatActivity {
 
+    Session session;
     Global global = Global.getInstance();
     String URL_POST_GET_GRUP_DATA = "http://".concat(global.getDataHosting()).concat("/tugaskita/android/3.0/get_grupdata.php");
     String URL_POST_ABSENT = "http://".concat(global.getDataHosting()).concat("/tugaskita/android/3.0/absent.php");
@@ -63,6 +63,8 @@ public class AbsentScanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_absent_scan);
+
+        session = new Session(this);
 
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
@@ -227,9 +229,6 @@ public class AbsentScanActivity extends AppCompatActivity {
                 return params;
             }
         };
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(5000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
@@ -246,13 +245,13 @@ public class AbsentScanActivity extends AppCompatActivity {
                     String url = MediaManager.get().url().transformation(new Transformation().aspectRatio("1:1").gravity("auto").radius("max").width(200).crop("fill")).secure(true).generate("tugaskita/grup_profile/".concat(global.getDataScanAbsentAvatar().concat(".png")));
                     Picasso.with(AbsentScanActivity.this).load(url)
                             .placeholder(R.drawable.placeholder_image)
-                            .error(R.drawable.team_loaded)
+                            .error(R.drawable.group)
                             .into(grup_absact_image);
 
-                    url = MediaManager.get().url().transformation(new Transformation().aspectRatio("1:1").gravity("auto").radius("max").width(200).crop("fill")).secure(true).generate("tugaskita/profile/".concat(global.getDataUserAvatar()));
+                    url = MediaManager.get().url().transformation(new Transformation().aspectRatio("1:1").gravity("auto").radius("max").width(200).crop("fill")).secure(true).generate("tugaskita/profile/".concat(session.getUserAvatar()));
                     Picasso.with(AbsentScanActivity.this).load(url)
                             .placeholder(R.drawable.placeholder_image)
-                            .error(R.drawable.team_loaded)
+                            .error(global.getDefaultProfilePicture(session.getUserAvatarAlternative()))
                             .into(profile_absact_image);
 
                     // Load Ads
@@ -313,9 +312,6 @@ public class AbsentScanActivity extends AppCompatActivity {
                 return params;
             }
         };
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(5000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }

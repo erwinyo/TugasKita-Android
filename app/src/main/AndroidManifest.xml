@@ -9,18 +9,7 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.REORDER_TASKS" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <meta-data
-        android:name="com.google.android.gms.vision.DEPENDENCIES"
-        android:value="barcode" />
-    <meta-data
-        android:name="com.google.firebase.ml.vision.DEPENDENCIES"
-        android:value="face" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".GrupScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".TugaskitaInsightInfoActivity" />
+        <activity android:name=".TugaskitaCBTInfoActivity" />
+        <activity android:name=".TugaskitaCheckpointInfoActivity" />
         <activity
             android:name=".ExamActivity"
             android:label="@string/title_activity_exam"
@@ -47,17 +43,16 @@
         </receiver>
 
         <activity
+            android:name=".TugaskitaTargetInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".CBTActivity"
             android:label="@string/title_activity_cbt"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8548009440279879~1943333956" />
 
-        <activity
-            android:name=".FaceDetectionActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".AlternativeActivity"
             android:screenOrientation="portrait" />

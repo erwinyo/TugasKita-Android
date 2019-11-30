@@ -3,14 +3,17 @@ package com.example.tugaskita30;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 public class BootUpReceiver extends BroadcastReceiver {
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent i = new Intent(context, SplashActivity.class);  //MyActivity can be anything which you want to start on bootup...
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i);
+        SplashActivity splashActivity = new SplashActivity();
+        splashActivity.scheduleJob();
     }
 
 }

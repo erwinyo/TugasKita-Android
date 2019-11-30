@@ -6,15 +6,18 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -39,6 +42,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -50,9 +54,12 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
     Global global = Global.getInstance();
     String URL_POST_SEND_LISTENER_DATA = "http://".concat(global.getDataHosting()).concat("/tugaskita/android/3.0/register_log_cbt_data.php");
     String ip;
+    Uri uri;
+    boolean start = false, end = false, dialog = false;
+
 
     WebView cbt_cbtact_webview;
-    ProgressBar progress_cbtact_progressbar;
+    ProgressBar progress_cbtact_progressbar, cbt_cbtact_progressbar;
     LinearLayout saving_cbtact_layout;
     TextView text_cbtfinact_text;
 
@@ -75,6 +82,7 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
 
         createNotificationChannelCBT();
         progress_cbtact_progressbar = findViewById(R.id.progress_cbtact_progressbar);
+        cbt_cbtact_progressbar = findViewById(R.id.cbt_cbtact_progressbar);
         cbt_cbtact_webview = findViewById(R.id.cbt_cbtact_webview);
 
         cbt_cbtact_webview .setVisibility(View.INVISIBLE);
@@ -97,12 +105,20 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSettings.setLoadWithOverviewMode(true);
 
+        cbt_cbtact_webview.setWebChromeClient(new WebChromeClient() {
+            public void onProgressChanged(WebView view, int progress) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    cbt_cbtact_progressbar.setProgress(progress, true);
+                } else {
+                    cbt_cbtact_progressbar.setProgress(progress);
+                }
+            }
+        });
         cbt_cbtact_webview .loadUrl("http://".concat(ip));
         cbt_cbtact_webview .setWebViewClient(new WebViewClient(){
             public void onPageFinished(WebView view, String url) {
                 cbt_cbtact_webview .setVisibility(View.VISIBLE);
                 progress_cbtact_progressbar.setVisibility(View.INVISIBLE);
-                //storeScreenshot(takescreenshot(cbt_cbtact_webview), "HEY");
             }
         });
 
@@ -135,7 +151,7 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
             final NotificationCompat.Builder builder = new NotificationCompat.Builder(this, global.getChannelIdCbt());
             builder.setContentTitle("CBT Peringatan")
                     .setContentText("10 detik untuk kembali")
-                    .setSmallIcon(R.drawable.ic_school_blue_24dp)
+                    .setSmallIcon(R.mipmap.ic_launcher)
                     .setColor(ContextCompat.getColor(this, R.color.blue))
                     .setSound(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.opening))
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -159,7 +175,7 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
                     tActive = true;
                     while (tActive) {
                         i += 10;
-                        builder.setContentText(String.valueOf((PROGRESS_MAX-i)/10).concat(" detik untuk kembali"))
+                        builder.setContentText(String.valueOf((PROGRESS_MAX - i) / 10).concat(" detik untuk kembali"))
                                 .setProgress(PROGRESS_MAX, i, false);
                         notificationManager.notify(404, builder.build());
                         SystemClock.sleep(1000);
@@ -171,8 +187,17 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
                                     .setOngoing(false);
                             notificationManager.notify(404, builder.build());
 
+                            // CREATE UNIQUE ID WITH TIME AND DATE
+                            Date dNow = new Date();
+                            SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
+                            String uniqueID = ft.format(dNow);
+
+                            String log = uniqueID.concat("~OUT-BREAK").concat("/");
+                            session.setCBT(session.getCBT().concat(log));
+
+                            sendListenerData(session.getCBT(), "write");
+
                             tActive = false;
-                            finish();
                         }
                     }
                     System.out.println("Stopped Running.... t Thread");
@@ -181,7 +206,23 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
         }
     }
 
-    public void sendAllListenerData() {
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        dialog = false;
+
+        if (!hasFocus && start && (!end) && dialog) {
+            // CREATE UNIQUE ID WITH TIME AND DATE
+            Date dNow = new Date();
+            SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
+            String uniqueID = ft.format(dNow);
+
+            String log = uniqueID.concat("~WINDOW-CHANGE").concat("/");
+            session.setCBT(session.getCBT().concat(log));
+        }
+    }
+
+    public void sendListenerData(final String log, final String type) {
         text_cbtfinact_text.setText("connecting to server...");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_POST_SEND_LISTENER_DATA, new Response.Listener<String>() {
             @Override
@@ -192,13 +233,15 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
                     String message = jsonObject.getString("message");
 
                     if (success.equals("1")) {
-                        text_cbtfinact_text.setText("almost done...");
-                        // reset session
-                        session.setCBT("");
-                        // notify user
-                        notificationCBT(CBTActivity.this, global.getChannelIdCbt(), "CBT Berakhir", "Terima Kasih telah megikuti CBT TugasKita", 404);
-                        SystemClock.sleep(2000);
-                        finish();
+                        if (!type.equals("live")) {
+                            text_cbtfinact_text.setText("almost done...");
+                            // reset session
+                            session.setCBT("");
+                            // notify user
+                            notificationCBT(CBTActivity.this, global.getChannelIdCbt(), "CBT Berakhir", "Terima Kasih telah megikuti CBT TugasKita", 404);
+                            SystemClock.sleep(2000);
+                            finish();
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -208,8 +251,8 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
             @Override
             public void onErrorResponse(VolleyError error) {
                 text_cbtfinact_text.setText("internet connection error occurred... ");
-                SystemClock.sleep(2000);
-                sendAllListenerData(); // trying again
+                SystemClock.sleep(5000);
+                sendListenerData(log, type); // trying again
             }
         }) {
             @Override
@@ -221,7 +264,8 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
 
                 params.put("userid", session.getUserId());
                 params.put("tanggal", tanggal);
-                params.put("log", session.getCBT());
+                params.put("log", log);
+                params.put("type", type);
 
                 return params;
             }
@@ -236,8 +280,11 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
         Date dNow = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
         String uniqueID = ft.format(dNow);
-        session.setCBT(session.getCBT().concat(uniqueID).concat("~START").concat("/"));
 
+        String log = uniqueID.concat("~START").concat("/");
+        session.setCBT(session.getCBT().concat(log));
+
+        start = true;
         notificationCBT(this, global.getChannelIdCbt(), "CBT Dimulai", "Selamat Datang ".concat(session.getUserNamaLengkap()), 404);
         super.onAttachedToWindow();
     }
@@ -249,7 +296,9 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
             Date dNow = new Date();
             SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
             String uniqueID = ft.format(dNow);
-            session.setCBT(session.getCBT().concat(uniqueID).concat("~RESUME").concat("/"));
+
+            String log = uniqueID.concat("~RESUME").concat("/");
+            session.setCBT(session.getCBT().concat(log));
 
             timer.stopRunning();
             notificationCBT(this, global.getChannelIdCbt(), "CBT", "Terima kasih sudah kembali!", 404);
@@ -264,17 +313,21 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
         Date dNow = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
         String uniqueID = ft.format(dNow);
-        session.setCBT(session.getCBT().concat(uniqueID).concat("~BACK").concat("/"));
+
+        String log = uniqueID.concat("~BACK").concat("/");
+        session.setCBT(session.getCBT().concat(log));
 
         openDialogKeluarCBT();
     }
 
     public void openDialogCBT() {
+        dialog = true;
         DialogCBT dialogCBT= new DialogCBT();
         dialogCBT.show(getSupportFragmentManager(), "CBT dialog");
     }
 
     public void openDialogKeluarCBT() {
+        dialog = true;
         DialogKeluarCBT dialogKeluarCBT= new DialogKeluarCBT();
         dialogKeluarCBT.show(getSupportFragmentManager(), "Keluar CBT dialog");
     }
@@ -285,7 +338,9 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
         Date dNow = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
         String uniqueID = ft.format(dNow);
-        session.setCBT(session.getCBT().concat(uniqueID).concat("~REFRESH").concat("/"));
+
+        String log = uniqueID.concat("~REFRESH").concat("/");
+        session.setCBT(session.getCBT().concat(log));
 
         cbt_cbtact_webview .setVisibility(View.INVISIBLE);
         progress_cbtact_progressbar.setVisibility(View.VISIBLE);
@@ -300,11 +355,14 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
 
     @Override
     public void onKeluar() {
+        end = true;
         // CREATE UNIQUE ID WITH TIME AND DATE
         Date dNow = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
         String uniqueID = ft.format(dNow);
-        session.setCBT(session.getCBT().concat(uniqueID).concat("~OUT").concat("/"));
+
+        String log = uniqueID.concat("~OUT").concat("/");
+        session.setCBT(session.getCBT().concat(log));
 
         // Just Tambahan Clear
         cbt_cbtact_webview.clearCache(true );
@@ -321,16 +379,20 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
         // saving log_cbt
         cbt_cbtact_webview.setVisibility(View.GONE);
         saving_cbtact_layout.setVisibility(View.VISIBLE);
-        sendAllListenerData();
+
+        sendListenerData(session.getCBT(), "write");
     }
 
     @Override
     public void onKeluarCBT() {
+        end = true;
         // CREATE UNIQUE ID WITH TIME AND DATE
         Date dNow = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
         String uniqueID = ft.format(dNow);
-        session.setCBT(session.getCBT().concat(uniqueID).concat("~OUT").concat("/"));
+
+        String log = uniqueID.concat("~OUT").concat("/");
+        session.setCBT(session.getCBT().concat(log));
 
         // Just Tambahan Clear
         cbt_cbtact_webview.clearCache(true );
@@ -347,7 +409,8 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
         // saving log_cbt
         cbt_cbtact_webview.setVisibility(View.GONE);
         saving_cbtact_layout.setVisibility(View.VISIBLE);
-        sendAllListenerData();
+
+        sendListenerData(session.getCBT(), "write");
     }
 
     @Override
@@ -385,14 +448,21 @@ public class CBTActivity extends AppCompatActivity implements DialogCBT.DialogCB
     public void notificationCBT(final Context cntx, String CHANNEL_ID, String contentTitle, String contentText, int id) {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(cntx);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(cntx, CHANNEL_ID);
-        builder.setContentTitle(contentTitle)
+        builder.setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(contentTitle)
                 .setContentText(contentText)
-                .setSmallIcon(R.drawable.ic_school_blue_24dp)
                 .setColor(ContextCompat.getColor(cntx, R.color.blue))
                 .setSound(Uri.parse("android.resource://"+cntx.getPackageName()+"/"+R.raw.opening))
                 .setVibrate(new long[]{Notification.DEFAULT_VIBRATE})
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
         notificationManager.notify(id, builder.build());
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 }
 

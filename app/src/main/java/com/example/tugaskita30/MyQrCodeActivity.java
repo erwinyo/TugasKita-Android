@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,7 @@ public class MyQrCodeActivity extends AppCompatActivity {
     Global global = Global.getInstance();
 
     ImageView qr_myqrcode_image;
+    TextView id_myqrcode_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class MyQrCodeActivity extends AppCompatActivity {
         } catch (WriterException e) {
             e.printStackTrace();
         }
+
+        id_myqrcode_text = findViewById(R.id.id_myqrcode_text);
+        id_myqrcode_text.setText("ID: ".concat(session.getUserNama()));
     }
 
     public void openErrorDialog(String errorString) {
