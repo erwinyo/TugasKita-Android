@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:progress="28"
+            android:indeterminate="true"
+            android:progress="0"
             android:visibility="gone" />
 
         <TextView
@@ -41,7 +42,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:gravity="center|right"
-            android:text="28%"
+            android:text="TugasKita Target"
             android:textColor="@color/colorPrimaryDark"
             android:visibility="gone"
             app:fontFamily="@font/baloo_thambi" />
@@ -71,7 +72,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView13"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_sans_semibold"
@@ -84,7 +84,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="cth.tugas kliping, tugas kelompok"
-                        android:inputType="textPersonName|textCapWords" />
+                        android:inputType="textPersonName|textCapWords"
+                        android:importantForAutofill="no" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -98,7 +99,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_sans_semibold"
@@ -405,7 +405,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_sans_semibold"
@@ -467,7 +466,8 @@
                         android:ems="10"
                         android:gravity="start|top"
                         android:hint="keterangan tugas lebih lanjut..."
-                        android:inputType="textMultiLine" />
+                        android:inputType="textMultiLine"
+                        android:importantForAutofill="no" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -491,7 +491,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView17"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_sans_semibold"

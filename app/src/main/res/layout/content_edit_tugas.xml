@@ -41,7 +41,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tugas_edttgs_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_sans_semibold"
@@ -54,7 +53,8 @@
                     android:layout_marginBottom="10dp"
                     android:ems="10"
                     android:hint="cth.tugas kliping, tugas kelompok"
-                    android:inputType="textPersonName|textCapWords" />
+                    android:inputType="textPersonName|textCapWords"
+                    android:importantForAutofill="no" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -250,7 +250,6 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/mulok_edttgs_button"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginLeft="1dp"
@@ -261,7 +260,6 @@
                     android:textColor="@color/white" />
 
                 <Button
-                    android:id="@+id/wirausaha_edttgs_button"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginLeft="1dp"
@@ -431,7 +429,8 @@
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="ketik info tambahan disini..."
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"
+                    android:importantForAutofill="no" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

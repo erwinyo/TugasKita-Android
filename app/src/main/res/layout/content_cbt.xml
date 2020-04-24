@@ -48,16 +48,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView108"
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/lbanner_cbtact_adview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="please wait TugasKita now saving your work..."
+            android:layout_marginBottom="30dp"
+            app:adSize="MEDIUM_RECTANGLE"
+            app:adUnitId="ca-app-pub-6196482531272325/3737254558" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="please wait.. TugasKita now saving your current status..."
             android:textColor="@color/black"
             android:textSize="12sp" />
 
         <ProgressBar
-            android:id="@+id/progressBar2"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +73,7 @@
             android:id="@+id/text_cbtfinact_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="20dp"
             android:text="waiting for connection..."
             android:textColor="@color/black" />
     </LinearLayout>

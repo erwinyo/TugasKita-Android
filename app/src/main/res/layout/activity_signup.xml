@@ -80,14 +80,14 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/prompt_password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:importantForAutofill="no" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button8"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -112,10 +112,11 @@
         android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="TODO"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tugaskita_icon"
+        app:srcCompat="@drawable/new_logo_tugaskita"
         tools:srcCompat="@tools:sample/avatars[1]" />
 
     <TextView
@@ -124,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="Hello"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
@@ -150,7 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/rounded_solid_grey_border"
@@ -161,7 +162,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView100">
 
         <TextView
-            android:id="@+id/textView101"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nama Lengkap"
@@ -173,6 +173,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:importantForAutofill="no"
             android:inputType="textPersonName|textCapWords" />
 
     </LinearLayout>
@@ -194,7 +195,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
-            android:id="@+id/textView102"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Username"
@@ -205,10 +205,10 @@
             android:id="@+id/username_signup_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:capitalize="none"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:importantForAutofill="no" />
 
     </LinearLayout>
 
@@ -229,7 +229,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
         <TextView
-            android:id="@+id/textView103"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/prompt_email"
@@ -240,10 +239,10 @@
             android:id="@+id/email_signup_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:capitalize="none"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:importantForAutofill="no" />
 
     </LinearLayout>
 
@@ -259,12 +258,14 @@
         android:background="@drawable/rounded_solid_grey_border"
         android:orientation="vertical"
         android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView104"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/prompt_password"
@@ -275,10 +276,10 @@
             android:id="@+id/password_signup_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:capitalize="none"
             android:ems="10"
             android:inputType="textPassword"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:importantForAutofill="no" />
 
     </LinearLayout>
 
@@ -286,22 +287,21 @@
         android:id="@+id/signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_solid_primary_border"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:text="Signup Account"
+        android:text="Buat Akun"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        android:drawableRight="@drawable/ic_arrow_forward_white_24dp"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button7"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -40,7 +40,8 @@
                     android:id="@+id/profile_guestact_image"
                     android:layout_width="135dp"
                     android:layout_height="135dp"
-                    tools:srcCompat="@tools:sample/avatars[1]" />
+                    tools:srcCompat="@tools:sample/avatars[1]"
+                    android:contentDescription="TODO" />
             </androidx.cardview.widget.CardView>
 
             <TextView

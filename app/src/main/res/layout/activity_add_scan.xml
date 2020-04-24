@@ -37,7 +37,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/status_addscanact_text"
-        tools:srcCompat="@tools:sample/avatars[6]" />
+        tools:srcCompat="@tools:sample/avatars[6]"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/nama_scanaddact_text"
@@ -78,7 +79,6 @@
         app:layout_constraintTop_toBottomOf="@+id/nama_scanaddact_text" />
 
     <Button
-        android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/colorPrimaryDark"

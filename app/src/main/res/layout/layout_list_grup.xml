@@ -24,10 +24,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <LinearLayout
+                android:layout_width="7dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="vertical"></LinearLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="13dp"
                 android:layout_marginRight="20dp"
                 app:cardCornerRadius="40dp"
                 app:cardElevation="5dp">
@@ -36,6 +42,7 @@
                     android:id="@+id/gpl_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="TODO"
                     tools:srcCompat="@tools:sample/avatars[11]" />
             </androidx.cardview.widget.CardView>
 

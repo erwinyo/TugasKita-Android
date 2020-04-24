@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView106"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -26,7 +25,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView107"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -44,11 +42,11 @@
             app:cardCornerRadius="0dp">
 
             <ImageView
-                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
                 app:srcCompat="@drawable/tugaskita_cbt"
-                tools:srcCompat="@drawable/tugaskita_cbt" />
+                tools:srcCompat="@drawable/tugaskita_cbt"
+                android:contentDescription="TODO" />
 
         </androidx.cardview.widget.CardView>
 
@@ -61,7 +59,6 @@
             app:contentPadding="10dp">
 
             <TextView
-                android:id="@+id/textView111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cabin_semibold"
@@ -77,11 +74,11 @@
             android:layout_marginBottom="10dp">
 
             <ImageView
-                android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/ip_address"
-                tools:srcCompat="@drawable/ip_address" />
+                tools:srcCompat="@drawable/ip_address"
+                android:contentDescription="TODO" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -106,7 +103,6 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/textView113"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cabin_semibold"
@@ -116,7 +112,6 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/textView112"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"

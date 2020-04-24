@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_pletuk_dashboard"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".TugasActivity"
     tools:showIn="@layout/activity_tugas">
@@ -79,6 +78,7 @@
                         android:id="@+id/banner1_tgsact_tukit"
                         android:layout_width="320dp"
                         android:layout_height="100dp"
+                        android:contentDescription="TODO"
                         android:visibility="gone"
                         tools:srcCompat="@tools:sample/avatars[1]" />
 
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:visibility="visible"
                         app:adSize="LARGE_BANNER"
-                        app:adUnitId="ca-app-pub-8548009440279879/3336306672" />
+                        app:adUnitId="ca-app-pub-2611717891082892/6961943413" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
@@ -117,7 +117,7 @@
                 android:layout_marginRight="10dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
+                app:cardElevation="3dp"
                 app:contentPaddingBottom="10dp"
                 app:contentPaddingLeft="10dp"
                 app:contentPaddingRight="15dp"
@@ -140,7 +140,6 @@
                         android:textStyle="bold" />
 
                     <View
-                        android:id="@+id/divider"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="@color/colorPrimaryDark" />
@@ -155,6 +154,7 @@
                         android:id="@+id/errToday"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
+                        android:contentDescription="TODO"
                         android:visibility="gone"
                         app:srcCompat="@drawable/tugas_nodata"
                         tools:srcCompat="@tools:sample/avatars[0]" />
@@ -170,7 +170,7 @@
                 android:layout_marginRight="10dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
+                app:cardElevation="3dp"
                 app:contentPaddingBottom="10dp"
                 app:contentPaddingLeft="10dp"
                 app:contentPaddingRight="15dp"
@@ -193,7 +193,6 @@
                         android:textStyle="bold" />
 
                     <View
-                        android:id="@+id/divider2"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="@color/colorPrimaryDark" />
@@ -208,6 +207,7 @@
                         android:id="@+id/errTommorow"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
+                        android:contentDescription="TODO"
                         android:visibility="gone"
                         app:srcCompat="@drawable/tugas_nodata"
                         tools:srcCompat="@tools:sample/avatars[0]" />
@@ -230,12 +230,13 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="0dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="3dp">
 
                     <ImageView
                         android:id="@+id/banner2_tgsact_tukit"
                         android:layout_width="320dp"
                         android:layout_height="100dp"
+                        android:contentDescription="TODO"
                         android:visibility="gone"
                         tools:srcCompat="@tools:sample/avatars[2]" />
 
@@ -244,45 +245,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:adSize="LARGE_BANNER"
-                        app:adUnitId="ca-app-pub-8548009440279879/3336306672" />
+                        app:adUnitId="ca-app-pub-2611717891082892/6961943413" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView85"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:fontFamily="@font/nunito_sans_semibold"
-                        android:text="Personalize Your Group"
-                        android:textColor="@color/colorPrimaryDark" />
-
-                    <Button
-                        android:id="@+id/pengaturan_tgsact_button"
-                        style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Go"
-                        android:textColor="@color/redDark"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -292,7 +257,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -314,7 +279,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal" />
+                        android:orientation="horizontal">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <Button
+                        android:id="@+id/areasecretary_tgsact_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:onClick="openSecretaryArea"
+                        android:text="AREA SEKREATRIS" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -325,10 +301,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
+                app:cardElevation="3dp"
                 app:contentPaddingBottom="10dp"
                 app:contentPaddingLeft="10dp"
                 app:contentPaddingRight="15dp"
@@ -351,7 +327,6 @@
                         android:textStyle="bold" />
 
                     <View
-                        android:id="@+id/divider3"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="@color/colorPrimaryDark" />
@@ -366,12 +341,23 @@
                         android:id="@+id/errOthers"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
+                        android:contentDescription="TODO"
                         android:visibility="gone"
                         app:srcCompat="@drawable/tugas_nodata"
                         tools:srcCompat="@tools:sample/avatars[0]" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/vector3"
+            tools:src="@drawable/vector3"
+            tools:srcCompat="@drawable/vector3" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

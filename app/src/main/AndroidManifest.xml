@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tugaskita30">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.management.tugaskita">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -19,20 +24,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name="com.management.tugaskita.AlternativeMenuActivity"></activity>
+        <activity android:name="com.management.tugaskita.secretaryAreaActivity" />
         <activity
-            android:name=".GrupScanActivity"
+            android:name="com.management.tugaskita.GrupScanActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".TugaskitaInsightInfoActivity" />
-        <activity android:name=".TugaskitaCBTInfoActivity" />
-        <activity android:name=".TugaskitaCheckpointInfoActivity" />
-        <activity
-            android:name=".ExamActivity"
-            android:label="@string/title_activity_exam"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity android:name="com.management.tugaskita.TugaskitaCBTInfoActivity" />
         <receiver
-            android:name=".BootUpReceiver"
+            android:name="com.management.tugaskita.BootUpReceiver"
             android:enabled="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
@@ -43,153 +43,136 @@
         </receiver>
 
         <activity
-            android:name=".TugaskitaTargetInfoActivity"
+            android:name="com.management.tugaskita.TugaskitaTargetInfoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CBTActivity"
+            android:name="com.management.tugaskita.CBTActivity"
             android:label="@string/title_activity_cbt"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8548009440279879~1943333956" />
+            android:value="ca-app-pub-2611717891082892~9588106751" />
 
         <activity
-            android:name=".AlternativeActivity"
+            android:name="com.management.tugaskita.AlternativeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name="com.management.tugaskita.ForgotPasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".InformationActivity"
+            android:name="com.management.tugaskita.InformationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MataPelajaranProfileActivity"
+            android:name="com.management.tugaskita.MataPelajaranProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CouponActivity"
+            android:name="com.management.tugaskita.WhatsNewInTugasKitaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TransactionCouponActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".CouponScanActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".WhatsNewInTugasKitaActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".NewsActivity" />
-        <activity
-            android:name=".SignupActivity"
+            android:name="com.management.tugaskita.SignupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".MyService"
+            android:name="com.management.tugaskita.MyService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity
-            android:name=".ComingSoonActivity"
+            android:name="com.management.tugaskita.ComingSoonActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".GuestProfileActivity"
+            android:name="com.management.tugaskita.GuestProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PointActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ErrorActivity"
+            android:name="com.management.tugaskita.ErrorActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ErrorScanActivity"
+            android:name="com.management.tugaskita.ErrorScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AbsentScanActivity"
+            android:name="com.management.tugaskita.AbsentScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddScanActivity"
+            android:name="com.management.tugaskita.AddScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MyQrCodeActivity"
+            android:name="com.management.tugaskita.MyQrCodeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AnggotaActivity"
+            android:name="com.management.tugaskita.AnggotaActivity"
             android:label="@string/title_activity_anggota"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateGroupActivity"
+            android:name="com.management.tugaskita.CreateGroupActivity"
             android:label="@string/title_activity_create_group"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name="com.management.tugaskita.ChangePasswordActivity"
             android:label="@string/title_activity_change_password"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UndangTemanActivity"
+            android:name="com.management.tugaskita.UndangTemanActivity"
             android:label="@string/title_activity_undang_teman"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditTugasActivity"
+            android:name="com.management.tugaskita.EditTugasActivity"
             android:label="@string/title_activity_edit_tugas"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".GrupProfileActivity"
+            android:name="com.management.tugaskita.GrupProfileActivity"
             android:label="@string/title_activity_grup_profile"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.management.tugaskita.ui.login.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TambahTugasActivity"
+            android:name="com.management.tugaskita.TambahTugasActivity"
             android:label="@string/title_activity_tambah_tugas"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TugasActivity"
+            android:name="com.management.tugaskita.TugasActivity"
             android:label="@string/title_activity_tugas"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.management.tugaskita.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TambahTemanActivity"
+            android:name="com.management.tugaskita.TambahTemanActivity"
             android:label="@string/title_activity_tambah_teman"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UndanganMasukActivity"
+            android:name="com.management.tugaskita.UndanganMasukActivity"
             android:label="@string/title_activity_undangan_masuk"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ScanActivity" />
+        <activity android:name="com.management.tugaskita.ScanActivity" />
         <activity
-            android:name=".DashboardActivity"
+            android:name="com.management.tugaskita.DashboardActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.management.tugaskita.SplashActivity"
             android:resizeableActivity="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -202,7 +185,14 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts" /> <!-- [START firebase_service] -->
+        <service
+            android:name="com.management.tugaskita.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

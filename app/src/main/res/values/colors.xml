@@ -14,13 +14,9 @@
     <color name="green">#32a852</color>
     <color name="greenDark">#14910E</color>
     <color name="lightGray">#F7F7F7</color>
-    <color name="gray">#BFBFBF</color>
 
 
-    <color name="year">#999999</color>
     <color name="title">#222222</color>
 
 
-    <color name="bg_gradient_start">#0D1349</color>
-    <color name="bg_gradient_end">#6b394c</color>
 </resources>

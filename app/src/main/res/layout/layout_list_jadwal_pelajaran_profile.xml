@@ -52,7 +52,8 @@
                 android:id="@+id/thumbnail_gprfact_layout_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                tools:srcCompat="@tools:sample/avatars[1]" />
+                tools:srcCompat="@tools:sample/avatars[1]"
+                android:contentDescription="TODO" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

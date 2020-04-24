@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView41"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
@@ -24,12 +23,12 @@
             android:textSize="36sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="50dp"
-            app:srcCompat="@drawable/tugaskita_icon"
-            tools:srcCompat="@drawable/tugaskita_icon" />
+            app:srcCompat="@drawable/new_logo_tugaskita"
+            tools:srcCompat="@drawable/new_logo_tugaskita"
+            android:contentDescription="TODO" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -45,7 +44,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView42"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/viga"
@@ -54,7 +52,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView116"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -79,7 +76,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView115"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/viga"
@@ -88,7 +84,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView43"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -97,7 +92,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView51"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -106,7 +100,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView46"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -115,7 +108,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView48"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -124,7 +116,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView90"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -133,7 +124,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView44"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -142,7 +132,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -151,7 +140,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView45"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -160,7 +148,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView49"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -169,7 +156,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView47"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -178,7 +164,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView83"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -187,7 +172,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView94"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -212,7 +196,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView26"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/viga"
@@ -221,15 +204,14 @@
                     android:textSize="18sp" />
 
                 <ImageView
-                    android:id="@+id/imageView8"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:src="@drawable/playstore"
                     tools:src="@drawable/playstore"
-                    tools:srcCompat="@drawable/playstore" />
+                    tools:srcCompat="@drawable/playstore"
+                    android:contentDescription="TODO" />
 
                 <TextView
-                    android:id="@+id/textView87"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -253,7 +235,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView91"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/viga"
@@ -262,7 +243,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView92"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -271,7 +251,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView93"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -282,7 +261,6 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/textView97"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -293,7 +271,6 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/textView95"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -304,7 +281,6 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/textView96"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"

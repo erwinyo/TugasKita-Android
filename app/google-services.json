@@ -42,6 +42,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962755836012:android:6dac4628d3288c652fc049",
+        "android_client_info": {
+          "package_name": "com.management.tugaskita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962755836012-o6r173arphadvu9cnlnbpe699ds6q523.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqMuhwhQfjDg-eK5UC7AH1HqQbe_W5Q2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962755836012-o6r173arphadvu9cnlnbpe699ds6q523.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

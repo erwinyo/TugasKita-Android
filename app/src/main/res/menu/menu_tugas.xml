@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.tugaskita30.TugasActivity">
+    tools:context="com.management.tugaskita.TugasActivity">
     <item
         android:id="@+id/action_grup_profile_tgsact"
         android:title="Pengaturan"

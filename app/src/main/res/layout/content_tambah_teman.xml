@@ -17,7 +17,6 @@
         android:paddingRight="20dp">
 
         <RadioButton
-            android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
@@ -29,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:importantForAutofill="no" />
 
         <LinearLayout
             android:id="@+id/profile_info_tbhtmnact_linearlayout"
@@ -44,7 +44,8 @@
                 android:id="@+id/profile_tbhtmnact_image"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                tools:srcCompat="@tools:sample/avatars[5]" />
+                tools:srcCompat="@tools:sample/avatars[5]"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/namalengkap_tbhtmnact_text"

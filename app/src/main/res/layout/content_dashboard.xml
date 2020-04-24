@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_pletuk_dashboard"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DashboardActivity"
     tools:showIn="@layout/activity_dashboard">
@@ -18,78 +17,88 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingLeft="20dp">
 
             <ImageView
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:contentDescription="TODO"
                 android:onClick="openSetupProfileActivity"
                 tools:srcCompat="@tools:sample/avatars[3]" />
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="20dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPaddingBottom="5dp"
+                app:contentPaddingLeft="10dp">
 
-                <TextView
-                    android:id="@+id/welcome_text"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/titillium_web_semibold"
-                    android:gravity="center_vertical"
-                    android:text="Hello, Erwin"
-                    android:textColor="#000"
-                    android:textSize="24sp"
-                    app:fontFamily="@font/baloo_thambi" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/welcome_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="erwinwingyonata@gmail.com"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/welcome_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/titillium_web_semibold"
+                        android:gravity="center_vertical"
+                        android:text="Hello, Erwin"
+                        android:textColor="#000"
+                        android:textSize="24sp"
+                        app:fontFamily="@font/baloo_thambi" />
 
-                <TextView
-                    android:id="@+id/welcome_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ID : erwinyonata"
-                    android:textColor="@color/blueDark"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/welcome_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="erwinwingyonata@gmail.com"
+                        android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/welcome_notify"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="NOTIFY ME : ON"
-                    android:textColor="@color/greenDark"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/welcome_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ID : erwinyonata"
+                        android:textColor="@color/blueDark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView88"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:onClick="openSetupProfileActivity"
-                    android:text="tap to view more"
-                    android:textColor="#5C5959"
-                    app:fontFamily="@font/titillium_web_semibold" />
+                    <TextView
+                        android:id="@+id/welcome_notify"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NOTIFY ME : ON"
+                        android:textColor="@color/greenDark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:onClick="openSetupProfileActivity"
+                        android:text="tap to view more"
+                        android:textColor="#5C5959"
+                        android:visibility="gone"
+                        app:fontFamily="@font/titillium_web_semibold" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal"
@@ -97,7 +106,6 @@
             android:paddingRight="20dp">
 
             <Button
-                android:id="@+id/scan_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_solid_blue_border"
@@ -110,7 +118,6 @@
                 android:textColor="#FFF" />
 
             <Button
-                android:id="@+id/tambah_teman_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,7 +137,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="320dp"
@@ -146,6 +154,7 @@
                     android:id="@+id/banner_tukit"
                     android:layout_width="320dp"
                     android:layout_height="100dp"
+                    android:contentDescription="TODO"
                     android:visibility="gone"
                     tools:srcCompat="@tools:sample/avatars[1]" />
 
@@ -155,8 +164,70 @@
                     android:layout_height="wrap_content"
                     android:visibility="visible"
                     app:adSize="LARGE_BANNER"
-                    app:adUnitId="ca-app-pub-8548009440279879/3336306672" />
+                    app:adUnitId="ca-app-pub-6196482531272325/3737254558" />
             </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="225dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/covid_banner"
+                    tools:srcCompat="@drawable/covid_banner" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="7dp"
+                    app:contentPaddingBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/colorPrimaryDark"
+                            android:orientation="horizontal"></LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="#DiRumahAjaDulu Ayo kita dukung usaha pemerintah untuk memperlambat penyebaran virus COVID-19"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -179,7 +250,6 @@
                 android:visibility="visible">
 
                 <TextView
-                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -190,7 +260,6 @@
                     android:textStyle="normal" />
 
                 <Button
-                    android:id="@+id/undangan_masuk_button"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -223,7 +292,6 @@
                 android:visibility="visible">
 
                 <TextView
-                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -234,7 +302,6 @@
                     android:textStyle="normal" />
 
                 <Button
-                    android:id="@+id/setup_profile_button"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -252,6 +319,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
             app:fillColor="@color/white"
             app:radius="1dp"
             app:slideInterval="5000"
@@ -265,6 +333,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:visibility="gone"
             app:cardCornerRadius="10dp"
             app:cardElevation="7dp">
 
@@ -275,7 +344,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView39"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -297,11 +365,102 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="125dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:onClick="openWebTitip"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPaddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        app:srcCompat="@drawable/printer"
+                        tools:srcCompat="@drawable/printer" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:fontFamily="@font/titillium_web_semibold"
+                        android:gravity="center"
+                        android:text="TITIP PRINT"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="125dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:contentPaddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/alarm_clock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        app:srcCompat="@drawable/alarm_clock"
+                        tools:srcCompat="@drawable/alarm_clock" />
+
+                    <TextView
+                        android:id="@+id/alarm_clock_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:fontFamily="@font/titillium_web_semibold"
+                        android:gravity="center"
+                        android:text="COMING SOON"
+                        android:textAllCaps="true"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/person_4"
+                tools:srcCompat="@drawable/person_4" />
+
+        </LinearLayout>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="10dp"
@@ -334,7 +493,6 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/buat_grup_button"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -364,26 +522,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_marginTop="40dp"
+                android:contentDescription="TODO"
                 android:visibility="gone"
                 app:srcCompat="@drawable/grup_nodata"
                 tools:srcCompat="@tools:sample/avatars[2]" />
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/textView31"
+        <ImageView
+            android:id="@+id/imageView7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/titillium_web_semibold"
-            android:gravity="center"
-            android:text="Secured by TugasKita"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="280dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/vector2"
+            tools:srcCompat="@drawable/vector2" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
